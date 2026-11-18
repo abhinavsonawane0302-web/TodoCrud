@@ -1,0 +1,116 @@
+<h1 class="bg-info text-center p-3 mt-5"><strong>STUDENT TASK </strong></h1>
+
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="text-center text-primary"><strong>STUDENT FORM</strong></h5>
+                    <div class="form-group">
+                        <label for="fname">First Name*</label>
+                        <input type="text" class="form-control" #fname>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lname">Last Name*</label>
+                        <input type="text" class="form-control" #lname>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" class="form-control" #email>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="contact">Contact*</label>
+                        <input type="text" class="form-control" #contact>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="isActive">Is Active*</label>
+
+                        <select class="form-control" #isActive>
+                            <option value="active">Active</option>
+                            <option value="deactive">Deactive</option>
+                        </select>
+
+                    </div>
+
+                    <button (click)="onAddstd()" class="btn btn-sm btn-outline-primary w-100 " *ngIf="!isInEditMode">Add
+                        Student</button>
+                    <button (click)="onUpdatestd()" class="btn btn-sm btn-outline-danger w-100"
+                        *ngIf="isInEditMode">Update
+                        Student</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+
+                                <th>Sr.no</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th style="width: 100px;">Active</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let std of studentArr; let i= index ">
+                                <td>{{i+1}}</td>
+                                <td>{{std.fname}} {{std.lname}}</td>
+                                <td>{{std.email}}</td>
+                                <td>{{std.contact}}</td>
+                                <td style="width: 100px;" class="text-nowrap">
+
+                                    <div class="d-flex align-item-center">
+                                        <input type="checkbox" [checked]="std.isActive" (click)="onUpdateChekbox(std)"
+                                            class="mr-2">
+
+                                        <span class="badge p-1"
+                                            [ngClass]="std.isActive ? 'badge-success' : 'badge-danger' ">
+                                            {{std.isActive ? "active" : "deactive"}}
+                                        </span>
+
+                                    </div>
+                                </td>
+
+
+                                <td class="text-center">
+                                    <button (click)="onEditStd(std)" class="mr-2" mat-mini-fab color="primary"
+                                        aria-label="Example icon button with a edit icon">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </td>
+
+                                <td class="text-center">
+                                    <button (click)="onDeleteStd(std.id)" mat-mini-fab color="warn"
+                                        aria-label="Example icon button with a delete icon">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </td>
+
+
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

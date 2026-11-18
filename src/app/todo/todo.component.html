@@ -1,0 +1,65 @@
+<h1 class="bg-dark text-center p-3 mt-3 text-white"><strong>TODO TASK </strong></h1>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="todoInput">Enter Todo</label>
+                        <input type="text" class="form-control" #todoInput>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="isCompleted">Is Completed</label>
+
+                        <select class="form-control" #isCompleted>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <button *ngIf="!isinEditMode" (click)="onAddtodo()" class="btn btn-sm btn-outline-primary w-100">Add
+                        Todo</button>
+
+                    <button *ngIf="isinEditMode" (click)="onUpdatetodo()"
+                        class="btn btn-sm btn-outline-danger w-100">Update Todo</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item align-item-center justify-content-between d-flex" *ngFor=" let todo of todoArr">
+
+                            <strong><input type="checkbox" [checked]="todo.isCompleted"
+                                    (click)="onUpdatechekbox(todo)" class="mr-2">{{todo.todoItem}}
+                                <span class="badge p-1" [ngClass]="{
+                                    'badge-success' :todo.isCompleted,
+                                    'badge-danger' :!todo.isCompleted
+                                }">{{todo.isCompleted? "completed": "inCompleted"}}</span>
+                            </strong>
+
+                            <div>
+
+                                <button (click)="onEdittodo(todo)" class="mr-2" mat-mini-fab color="primary"
+                                    aria-label="Example icon button with a edit icon">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+
+                                <button (click)="onDeletetodo(todo.todoId)" mat-mini-fab color="warn"
+                                    aria-label="Example icon button with a delete icon">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
