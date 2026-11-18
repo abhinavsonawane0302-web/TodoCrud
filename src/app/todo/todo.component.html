@@ -35,7 +35,7 @@
                         <li class="list-group-item align-item-center justify-content-between d-flex" *ngFor=" let todo of todoArr">
 
                             <strong><input type="checkbox" [checked]="todo.isCompleted"
-                                    (click)="onUpdatechekbox(todo)" class="mr-2">{{todo.todoItem}}
+                                    (click)="onUpdatechekbox(todo)" class="align-item-center mr-2">{{todo.todoItem}}
                                 <span class="badge p-1" [ngClass]="{
                                     'badge-success' :todo.isCompleted,
                                     'badge-danger' :!todo.isCompleted

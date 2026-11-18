@@ -9,14 +9,12 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StudentComponent } from './student/student.component';
-import { Todo1Component } from './todo1/todo1.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
     StudentComponent,
-    Todo1Component
   ],
   imports: [
     BrowserModule,
